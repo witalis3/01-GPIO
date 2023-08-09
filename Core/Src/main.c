@@ -88,7 +88,7 @@ int main(void)
   MX_GPIO_Init();
   MX_RNG_Init();
   /* USER CODE BEGIN 2 */
-
+  uint32_t rng;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,6 +98,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		HAL_RNG_GenerateRandomNumber(&hrng,&rng);
+
+		HAL_GPIO_TogglePin(PE3_GPIO_Port,PE3_Pin);
+		HAL_Delay(rng%600);
   }
   /* USER CODE END 3 */
 }
